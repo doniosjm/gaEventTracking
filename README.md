@@ -13,12 +13,12 @@ Each element that will trigger a ga() function call must have the following attr
 - analytics-event-type (optional)
 
 ##Usage
-1. Any DOM element can be setup to trigger an Event Tracking call to the ga() function. For example, an anchor tags would be setup as
+1) Any DOM element can be setup to trigger an Event Tracking call to the ga() function. For example, an anchor tags would be setup as
 
 ```js
 <a href="https://github.com/doniosjm/gaEventTracking" id="myLink" class="myClass" analytics-event-category="link" analytics-event-action="click" analytics-event-label="nav link" analytics-event-label="nav link" analytics-event-type="v1">Github</a>
 ```
-2. Configure gaEventTracking in 2 ways (these examples use jQuery):
+2) Configure gaEventTracking in 2 ways (these examples use jQuery):
 
 Automatic trigger:
 
@@ -42,10 +42,10 @@ $('.myClass').gaEventTracking({
 });
 ```
 
-Manual triggers are only fired when you specify - DOM events are ignored.
+Manual triggers ignore DOM events and are only fired by this call
 
 ```js
-$('#myLink')..gaEventTracking("send");
+$('#myLink').gaEventTracking("send");
 ```
 
 Both the automatic and manual triggers output the same ga() function call.
