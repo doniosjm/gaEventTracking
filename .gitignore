@@ -1,0 +1,23 @@
+# OS X
+.DS_Store
+
+# Vim
+.*.sw[a-z]
+
+# PhpStorm
+.idea/*
+
+# .NET
+web.config
+
+# lithium
+app/resources/tmp/logs/*
+app/resources/tmp/cache/templates/*
+
+# Postman Chrome app
+app/webroot/js/Postman.html
+app/webroot/js/Postman_files*
+
+# Grunt
+node_modules/*
+*.map
