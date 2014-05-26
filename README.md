@@ -2,13 +2,6 @@
 
 Google Analytics event tracking using element attributes
 
-
-##Download
-
-- [Development](https://raw.github.com/jgallen23/routie/master/dist/routie.js)
-- [Production](https://raw.github.com/jgallen23/routie/master/dist/routie.min.js)
-- [Source](https://github.com/jgallen23/routie)
-
 ##Prerequisite
 analytics.js from Google Analytics must be referenced on the page, [https://developers.google.com/analytics/devguides/collection/analyticsjs/events](https://developers.google.com/analytics/devguides/collection/analyticsjs/events)
 
