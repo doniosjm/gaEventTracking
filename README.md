@@ -59,4 +59,4 @@ Where:
 - action is the value of the analytics-event-action attribute
 - label is used in the concatenation of all analytics-event- attributes. For example, analytics-event-category|analytics-event-action|analytics-event-label|analytics-event-type
 
-And thank you to [Aaron George](https://github.com/AaronGeorge/html5template/) for pointing out that the custom attributes must be data- attributes.
+And thank you to [Aaron George](https://github.com/AaronGeorge) for pointing out that the custom attributes must be data- attributes.
