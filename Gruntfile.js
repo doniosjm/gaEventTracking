@@ -23,9 +23,9 @@ module.exports = function (grunt) {
             dist: {
                 options: {
                     sourceMap: false,
-                    compress: {
-                        drop_console: true
-                    }
+                    compress: true,
+                    mangle: false,
+                    preserveComments: 'some'
                 },
                 files: {
                     '<%= pkg.dist %>/jquery.gaEventTracking.min.js': ['<%= pkg.src %>/jquery.gaEventTracking.js']

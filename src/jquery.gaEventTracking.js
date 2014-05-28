@@ -1,7 +1,10 @@
-// gaEventTracking, Google Analytics event tracking using element data attributes
-// version 0.1.0
-// (c) 2014 Jeff Donios (jeff@donios.com)
-// released under the MIT license
+
+/* @license
+ * gaEventTracking, Google Analytics event tracking using element data attributes (https://github.com/doniosjm/gaEventTracking/)
+ * version 0.1.0
+ * (c) 2014 Jeff Donios (jeff@donios.com)
+ * released under the MIT license (https://github.com/doniosjm/gaEventTracking/blob/v0.1/LICENSE)
+ */
 (function($) {
 
 
