@@ -1,4 +1,4 @@
-// gaEventTracking, Google Analytics event tracking using element attributes
+// gaEventTracking, Google Analytics event tracking using element data attributes
 // version 0.1.0
 // (c) 2014 Jeff Donios (jeff@donios.com)
 // released under the MIT license
@@ -8,14 +8,14 @@
     function Analytics(element, options) {
         this.$element = $(element);
         this.options = options;
-    };
+    }
 
     Analytics.prototype = {
         send: function() {
-            var category = this.$element.attr('analytics-event-category'),
-                action = this.$element.attr('analytics-event-action'),
-                label = this.$element.attr('analytics-event-label'),
-                type = this.$element.attr('analytics-event-type');
+            var category = this.$element.attr('data-analytics-event-category'),
+                action = this.$element.attr('data-analytics-event-action'),
+                label = this.$element.attr('data-analytics-event-label'),
+                type = this.$element.attr('data-analytics-event-type');
 
             if(this.options.concatenateLabel){
                 // concatenate the attribute values
@@ -55,7 +55,7 @@
         function send() {
             var analytics = get(this);
             analytics.send();
-        };
+        }
 
         this.each(function() {
             get(this);
@@ -63,7 +63,7 @@
 
         // bind the trigger. If set to 'manual' your code should use gaEventTracking("send") to trigger
         if(options.trigger != 'manual'){
-            this['bind'](options.trigger, send);
+            this.bind(options.trigger, send);
         }
 
         return this;
@@ -77,19 +77,18 @@
         trigger: 'click'            // DOM event to trigger the ga call
     };
 
-    // get options from an element's attributes
+    // get options from an element's attributes. These are set at setup and shouldn't change with the flow of your application.
     $.fn.gaEventTracking.elementOptions = function(ele, options) {
         return $.extend(
             {},
             options,
             {
-                eventCategory: $(ele).attr('analytics-event-category'),
-                eventAction: $(ele).attr('analytics-event-action'),
-                eventAction: $(ele).attr('analytics-event-type'),
-                eventLabel: $(ele).attr('analytics-event-label')
+                concatenateLabel: $(ele).attr('data-analytics-concatenate-label'),
+                concatenateSeparator: $(ele).attr('data-analytics-concatenate-separator'),
+                send: $(ele).attr('data-analytics-send'),
+                trigger: $(ele).attr('data-analytics-event-trigger')
             }
         );
     };
-
 
 })(jQuery);

@@ -6,8 +6,10 @@
         "grunt": "~0.4.2",
         "grunt-contrib-jshint": "latest",
         "grunt-contrib-uglify": "latest",
-        "jshint-stylish": "latest"
+        "jshint-stylish": "latest",
+        "grunt-contrib-watch": "latest"
     },
-    "lib": "lib",
+    "src": "src",
+    "dist": "dist",
     "jQueryVersion": "jquery-2.1.1"
 }

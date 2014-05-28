@@ -11,25 +11,32 @@ module.exports = function (grunt) {
         pkg: grunt.file.readJSON('package.json'),
 
         jshint: {
-            production: {
+            src: {
                 options: {
                     reporter: require('jshint-stylish')
                 },
-                src: ['<%= pkg.lib %>/js/*.js']
+                src: ['<%= pkg.src %>/*.js']
             }
         },
 
         uglify: {
-            production: {
+            dist: {
                 options: {
-                    sourceMap: true,
+                    sourceMap: false,
                     compress: {
                         drop_console: true
                     }
                 },
                 files: {
-                    '<%= pkg.lib %>/jquery.gaEventTracking.min.js': ['<%= pkg.lib %>/jquery.gaEventTracking.js']
+                    '<%= pkg.dist %>/jquery.gaEventTracking.min.js': ['<%= pkg.src %>/jquery.gaEventTracking.js']
                 }
+            }
+        },
+
+        watch: {
+            src: {
+                files: ['<%= pkg.src %>/*.js'],
+                tasks: ['src']
             }
         }
     });
@@ -39,9 +46,11 @@ module.exports = function (grunt) {
     // ===========================================================================
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-contrib-uglify');
+    grunt.loadNpmTasks('grunt-contrib-watch');
 
     // ===========================================================================
     // CREATE TASKS ==============================================================
     // ===========================================================================
-    grunt.registerTask('production', ['jshint:production', 'uglify:production']);
+    grunt.registerTask('dist', ['jshint:src', 'uglify:dist']);
+    grunt.registerTask('src',  ['jshint:src', 'watch:src']);
 };

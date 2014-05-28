@@ -5,7 +5,7 @@
   "homepage": "https://github.com/doniosjm/gaEventTracking",
   "license": "MIT",
   "copyright": "Jeff Donios",
-  "main": "lib/jquery.gaEventTracking.js",
+  "main": "dist/jquery.gaEventTracking.min.js",
   "dependencies": {
   },
   "devDependencies": {
