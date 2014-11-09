@@ -1,7 +1,7 @@
 
 /* @license
  * gaEventTracking, Google Analytics event tracking using element data attributes (https://github.com/doniosjm/gaEventTracking/)
- * version 0.1.0
+ * version 0.2.0
  * (c) 2014 Jeff Donios (jeff@donios.com)
  * released under the MIT license (https://github.com/doniosjm/gaEventTracking/blob/v0.1/LICENSE)
  */
@@ -18,7 +18,9 @@
             var category = this.$element.attr('data-analytics-event-category'),
                 action = this.$element.attr('data-analytics-event-action'),
                 label = this.$element.attr('data-analytics-event-label'),
-                type = this.$element.attr('data-analytics-event-type');
+                type = this.$element.attr('data-analytics-event-type'),
+                name = this.$element.attr('data-analytics-event-name'),
+                value = this.$element.attr('data-analytics-event-value');
 
             if(this.options.concatenateLabel){
                 // concatenate the attribute values
@@ -27,9 +29,31 @@
 
             // the 'send' option must be true AND the ga object must be defined to send to ga. Otherwise, output is sent to the console.
             if(!this.options.send || typeof ga === 'undefined'){
-                console.log('Google Analytics: ga(\'send\', \'event\', \''+category+'\', \''+action+'\', \''+label+'\');');
+                if(this.options.dataLayer) {
+                    console.log('Google Analytics: dataLayer.push({');
+                    console.log('event: ' + name);
+                    console.log('event-category: ' + category);
+                    console.log('event-action: ' + action);
+                    console.log('event-label: ' + label);
+                    console.log('event-value: ' + value);
+                    console.log('});');
+                }
+                else {
+                    console.log('Google Analytics: ga(\'send\', \'event\', \'' + category + '\', \'' + action + '\', \'' + label + '\');');
+                }
             } else{
-                ga('send', 'event', category, action, label);
+                if(this.options.dataLayer) {
+                    dataLayer.push({
+                        'event': '\''+name+'\'',
+                        'event-category': '\''+category+'\'',
+                        'event-action': '\''+action+'\'',
+                        'event-label': '\''+label+'\'',
+                        'event-value': '\''+value+'\''
+                    });
+                }
+                else {
+                    ga('send', 'event', category, action, label);
+                }
             }
         }
     };
@@ -77,7 +101,8 @@
         concatenateLabel: true,     // false: output analytics-event-label attribute value; true: concatenate all 'analytics-event-' attribute values
         concatenateSeparator: '|',  // character used to separate concatenated labels
         send: false,                // send the ga call, or output to the console. Will output to the console if the ga object has not been defined.
-        trigger: 'click'            // DOM event to trigger the ga call
+        trigger: 'click',           // DOM event to trigger the ga call
+        dataLayer: true             // send the event to the data layer. If false, send to ga()
     };
 
     // get options from an element's attributes. These are set at setup and shouldn't change with the flow of your application.
