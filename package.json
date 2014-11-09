@@ -1,0 +1,15 @@
+{
+    "name": "gaEventTracking",
+    "author": "Jeff Donios",
+    "version": "0.1.0",
+    "devDependencies": {
+        "grunt": "~0.4.2",
+        "grunt-contrib-jshint": "latest",
+        "grunt-contrib-uglify": "latest",
+        "jshint-stylish": "latest",
+        "grunt-contrib-watch": "latest"
+    },
+    "src": "src",
+    "dist": "dist",
+    "jQueryVersion": "jquery-2.1.1"
+}
