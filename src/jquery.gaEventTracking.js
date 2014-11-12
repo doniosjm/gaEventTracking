@@ -27,8 +27,10 @@
                 label = category + this.options.concatenateSeparator + action + this.options.concatenateSeparator + label + this.options.concatenateSeparator + type;
             }
 
+            console.log('ga defined: ' + (typeof ga === undefined));
+
             // the 'send' option must be true AND the ga object must be defined to send to ga. Otherwise, output is sent to the console.
-            if(!this.options.send || typeof ga === 'undefined'){
+            if(!this.options.send || (typeof ga === undefined)){
                 if(this.options.dataLayer) {
                     console.log('Google Analytics: dataLayer.push({');
                     console.log('event: ' + name);
