@@ -1,7 +1,7 @@
 {
     "name": "gaEventTracking",
     "author": "Jeff Donios",
-    "version": "0.2.0",
+    "version": "0.2.1",
     "devDependencies": {
         "grunt": "~0.4.2",
         "grunt-contrib-jshint": "latest",

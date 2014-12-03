@@ -39,16 +39,16 @@
                     console.log('});');
                 }
                 else {
-                    console.log('Google Analytics: ga(\'send\', \'event\', \'' + category + '\', \'' + action + '\', \'' + label + '\');');
+                    console.log('Google Analytics: ga(\'send\', \'event\', ' + category + ', ' + action + ', ' + label + ');');
                 }
             } else{
                 if(this.options.dataLayer) {
                     dataLayer.push({
-                        'event': '\''+name+'\'',
-                        'event-category': '\''+category+'\'',
-                        'event-action': '\''+action+'\'',
-                        'event-label': '\''+label+'\'',
-                        'event-value': '\''+value+'\''
+                        'event': name,
+                        'event-category': category,
+                        'event-action': action,
+                        'event-label': label,
+                        'event-value': value
                     });
                 }
                 else {
